@@ -5,25 +5,64 @@
     <meta charset="UTF-8">
     <title>jQuery template</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Lato|Lustria|Nunito|PT+Serif|Poppins" rel="stylesheet">
 
     <script>
         //my own jQuery/javascript
         $(function() { //Don't delete or edit this
             //code goes here
+
+            //hides the h3 before the button is clicked
+            $('h3').hide();
+
+
+            $('button').click(function() {
+                //show the h3 after the button is clicked
+                $('h3').show();
+
+                //get information from the user after the button is clicked
+                var name = $('#name').val();
+                var title = $('#title').val();
+                var color = $('#color').val();
+                var genre = $('#genre').val()
+
+                var info = title + " is an original " + genre + " movie directed by award winning director " + name + "! The cast has worked hard for a long time and they are excited to bring the movie to theaters this summer! "
+
+                //slide up after info is gathered
+                $('#inputs').slideUp(2000)
+
+                //make ad appear
+                $('body').css('background-color', color);
+                $('h1').html(title).css('text-align', 'center');
+                $('span').html(name)
+                $('p').html(info)
+
+                if (font == "option 3") {
+                    $('p').css('background-color', 'green');
+                }
+            });
         });
     </script>
 </head>
 
 <body>
-    <p>You will be directing a new movie! But first we must collect essential information for your movie.<br> Please enter the following:<br></p>
-    Your name:
-    <input type="text" id="name" name="name"><br>
-    The title for your movie:
-    <input type="text" id="title" name="title"><br>
-    The fonts you would like:<br>
-    <input type=radio id="fonts" name="fonts" value="option 1"> option 1<br>
-    <input type=radio id="fonts" name="fonts" value="option 2"> option 2<br>
-    <input type=radio id="fonts" name="fonts" value="option 3"> option 3
+    <div id="inputs">
+        <p>You will be directing a new movie! But first we must collect essential information for your movie.<br> Please enter the following:<br></p>
+        Your name:
+        <input type="text" id="name" name="name"><br> The title for your movie:
+        <input type="text" id="title" name="title"><br> The background color your would like:
+        <input type='text' id="color" name='color'>
+        <br> What genre is your movie?
+        <input type='text' id="genre" name='genre'><br>
+        <button>create your movie ad!</button>
+    </div>
+
+    <div>
+        <h1></h1>
+        <h3>Directed by: <span></span></h3>
+        <p></p>
+    </div>
+
 </body>
 
 </html>
